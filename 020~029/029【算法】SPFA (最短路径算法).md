@@ -124,7 +124,7 @@ int main(void)
 
 然后将起点 $1$ 入队，队首为 $1$
 
-<img src="https://assets.zouht.com/img/io/29-01.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/29-01.webp" style="zoom:50%;" />
 
 ------
 
@@ -137,7 +137,7 @@ int main(void)
   - $3$ 号节点新距离 $0+1=1<\infty$，更新距离。
     - $3$ 号节点未被标记，$3$ 入队并标记
 
-<img src="https://assets.zouht.com/img/io/29-02.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/29-02.webp" style="zoom:50%;" />
 
 ------
 
@@ -148,7 +148,7 @@ int main(void)
   - $5$ 号节点新距离 $1+3=4<\infty$，更新距离。
     - $5$ 号节点未被标记，$5$ 入队并标记
 
-<img src="https://assets.zouht.com/img/io/29-03.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/29-03.webp" style="zoom:50%;" />
 
 ------
 
@@ -161,7 +161,7 @@ int main(void)
   - $5$ 号节点新距离 $2+1=3<4$，更新距离。
     - $3$ 号节点已被标记，跳过
 
-<img src="https://assets.zouht.com/img/io/29-04.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/29-04.webp" style="zoom:50%;" />
 
 ------
 
@@ -172,7 +172,7 @@ int main(void)
   - $6$ 号节点新距离 $3+2=5<\infty$，更新距离。
     - $6$ 号节点未被标记，$6$ 入队并标记
 
-<img src="https://assets.zouht.com/img/io/29-05.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/29-05.webp" style="zoom:50%;" />
 
 ------
 
@@ -182,7 +182,7 @@ int main(void)
 - 遍历 $4$ 号节点连接的节点 $6$
   - $6$ 号节点新距离 $5+2=7>5$，跳过
 
-<img src="https://assets.zouht.com/img/io/29-06.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/29-06.webp" style="zoom:50%;" />
 
 ------
 
@@ -191,7 +191,7 @@ int main(void)
 - 弹出并取消标记 $6$ 号节点
 - 无节点与 $6$ 号节点相连，无需其他操作
 
-<img src="https://assets.zouht.com/img/io/29-07.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/29-07.webp" style="zoom:50%;" />
 
 ------
 
@@ -211,7 +211,7 @@ Dijkstra 用优先队列的目的就是通过贪心，总是先从最短的路�
 
 正因如此，SPFA 可以处理负边权。如下图例子：
 
-<img src="https://assets.zouht.com/img/io/29-08.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/29-08.webp" style="zoom:50%;" />
 
 Dijkstra 由于贪心思想，$1\rightarrow3$ 距离为 $1$ 小于 $2$ 时，就直接将 $3$ 标记为最小了。但是 $2\rightarrow3$ 距离为负数，使开头更远的路总体上能更近。并且由于被标记，即使之后 $3$ 的距离重新更新为了 $0$，也不会重新更新后续节点，因此 $1\rightarrow4$ 的距离会得出错误的结果 $2$。
 

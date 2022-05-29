@@ -98,7 +98,7 @@ The fourth information directly gives us the sum of all elements.
 
 如下图，表示的就是 1 6；2 4；2 6；5 8 这四个联通，最后 0 和 8 联通，即可以求出和。
 
-<img src="https://assets.zouht.com/img/io/23-01.webp" style="zoom: 67%;" />
+<img src="https://assets.zouht.com/img/note/23-01.webp" style="zoom: 67%;" />
 
 求联通，很简单想到用并查集，因此初始化一个大小为 $N+1$ 的并查集即可。
 

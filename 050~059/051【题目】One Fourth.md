@@ -108,7 +108,7 @@ $P_i,P_j$ 不相邻判断：$i,j$ 相差的绝对值不可 $\leq1$。并且也�
 
 包含 $P_{i+1}$ 的部分的面积求法：如图，$S_{BCDE}=S_{\triangle BCD}+S_{\triangle BDE}$，即将多边形以 $P_i$ 为顶点划分为三角形。
 
-<img src="https://assets.zouht.com/img/io/51-01.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/51-01.webp" style="zoom:50%;" />
 
 三角形面积：已知 $\triangle ABC$ 的三个顶点 $A(x_1,y_1),B(x_2,y_2),C(x_3,y_3)$，可以用向量叉乘表示面积： $2S_{\triangle ABC}=\overrightarrow{AB}\times\overrightarrow{AC}$，即：
 $$
@@ -178,7 +178,7 @@ int main()
 
 如下图，若取 $B$ 为顶点，那么计算 $S_{\triangle BCD},S_{\triangle BCD}+S_{\triangle BDE}$，依此为吃掉的面积计算 $8 \times |a-b|$ 的结果。
 
-<img src="https://assets.zouht.com/img/io/51-02.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/51-02.webp" style="zoom:50%;" />
 
 **求法：**
 

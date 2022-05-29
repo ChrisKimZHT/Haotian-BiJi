@@ -15,7 +15,7 @@ Score : $500$ points
 You are given an integer $N$ greater than or equal to $2$ and a prime $P$.
 Consider the graph $G$ with $2N$ vertices and $(3N-2)$ edges shown in the figure below.
 
-<img src="https://assets.zouht.com/img/io/46-01.webp" style="zoom:67%;" />
+<img src="https://assets.zouht.com/img/note/46-01.webp" style="zoom:67%;" />
 
 More specifically, the edges connect the vertices as follows, where the vertices are labeled as Vertex $1$, Vertex $2$, $\ldots$, Vertex $2N$, and the edges are labeled as Edge $1$, Edge $2$, $\ldots$, Edge $(3N-2)$.
 
@@ -58,11 +58,11 @@ Print $N-1$ integers, the $i$-th of which is the answer for $i=k$, separated by 
 
 In the case $N=3$, there are $7$ ways, shown below, to remove exactly one edge so that the resulting graph is still connected.
 
-<img src="https://assets.zouht.com/img/io/46-02.webp"  />
+<img src="https://assets.zouht.com/img/note/46-02.webp"  />
 
 There are $15$ ways, shown below, to remove exactly two edges so that the resulting graph is still connected.
 
-<img src="https://assets.zouht.com/img/io/46-03.webp"  />
+<img src="https://assets.zouht.com/img/note/46-03.webp"  />
 
 Thus, these numbers modulo $P=998244353$ should be printed: $7$ and $15$, in this order.
 
@@ -86,7 +86,7 @@ Be sure to print the numbers modulo $P$.
 - $E_{b_1},E_{b_2},\dots,E_{b_{N-1}}$，即底部的边，编号 $i=1,2,\dots,N-1$，如下图蓝边；
 - $E_{c_0},E_{c_1},\dots,E_{c_{N-1}}$，即中间的边，编号 $i=0,1,\dots,N-1$，如下图绿边。
 
-<img src="https://assets.zouht.com/img/io/46-04.webp" style="zoom: 67%;" />
+<img src="https://assets.zouht.com/img/note/46-04.webp" style="zoom: 67%;" />
 
 然后把这个图的顶点 $V$ 分成两种：
 
@@ -100,7 +100,7 @@ Be sure to print the numbers modulo $P$.
 - 状态 $0$：图联通，如下图中上侧图。
 - 状态 $1$：图不连通，但有两个联通子图，并且两子图分别包含 $V_{a_i}$、$V_{b_i}$，如下图中下侧图。
 
-<img src="https://assets.zouht.com/img/io/46-05.webp" style="zoom: 67%;" />
+<img src="https://assets.zouht.com/img/note/46-05.webp" style="zoom: 67%;" />
 
 然后运用动态规划思想，$dp[i][j][k]:=$ 在子图 $G_i $中，去除 $j$ 条边后，处于状态 $k$ 的图的数量。
 
@@ -113,7 +113,7 @@ Be sure to print the numbers modulo $P$.
 - 如果新加的三条边 $E_{a_i},E_{b_i},E_{c_i}$ 去掉 $E_{c_i}$，那么这个图仍然为状态 $1$，如下图下面的情况
   - 递推式：$dp[i][j+1][1]$ += $dp[i-1][j][1]$
 
-<img src="https://assets.zouht.com/img/io/46-06.webp" style="zoom: 67%;" />
+<img src="https://assets.zouht.com/img/note/46-06.webp" style="zoom: 67%;" />
 
 再考虑 $dp[i-1][j][0]$ 的情况：
 
@@ -127,7 +127,7 @@ Be sure to print the numbers modulo $P$.
 - 如果新加的三条边 $E_{a_i},E_{b_i},E_{c_i}$ 去掉 $E_{b_i},E_{c_i}$，那么这个图会变成状态 $1$，如下图 $6$ 号情况
   - 递推式均为：$dp[i][j+2][1]$ += $dp[i-1][j][0]$
 
-<img src="https://assets.zouht.com/img/io/46-07.webp" style="zoom: 67%;" />
+<img src="https://assets.zouht.com/img/note/46-07.webp" style="zoom: 67%;" />
 
 时间复杂度：$O(N^2)$
 

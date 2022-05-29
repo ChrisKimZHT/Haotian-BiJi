@@ -71,7 +71,7 @@ Print $Q$ lines. The $i$-th line should contain the response to the $i$-th query
 
 The tree given in this input is shown below.
 
-![](https://assets.zouht.com/img/io/26-01.webp)
+![](https://assets.zouht.com/img/note/26-01.webp)
 
 For the $1$-st query, the vertices in the subtree rooted at Vertex $1$ are Vertices $1, 2, 3, 4$, and $5$, so print the $2$-nd largest value of the numbers written on these vertices, $4$.
 For the $2$-nd query, the vertices in the subtree rooted at Vertex $2$ are Vertices $2, 3$, and $5$, so print the $1$-st largest value of the numbers written on these vertices, $5$.

@@ -94,27 +94,27 @@ int main(void)
 
 **初始化：**
 
-<img src="https://assets.zouht.com/img/io/34-01.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/34-01.webp" style="zoom:50%;" />
 
 **从点 $1$ 开始（可以从任意节点开始）：**
 
 - 将 $1\leftrightarrow2,1\leftrightarrow3,1\leftrightarrow4$ 入堆
 
-<img src="https://assets.zouht.com/img/io/34-02.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/34-02.webp" style="zoom:50%;" />
 
 **最短的边为 $1\leftrightarrow3$：**
 
 - 将 $3$ 标记为联通，并将 $1\leftrightarrow3$ 长度加入答案
 - 将 $3\leftrightarrow2,3\leftrightarrow5,3\leftrightarrow6,3\leftrightarrow4$ 入堆
 
-<img src="https://assets.zouht.com/img/io/34-03.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/34-03.webp" style="zoom:50%;" />
 
 **后面的过程略：**
 
-<img src="https://assets.zouht.com/img/io/34-04.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/34-04.webp" style="zoom:50%;" />
 
-<img src="https://assets.zouht.com/img/io/34-05.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/34-05.webp" style="zoom:50%;" />
 
-<img src="https://assets.zouht.com/img/io/34-06.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/34-06.webp" style="zoom:50%;" />
 
-<img src="https://assets.zouht.com/img/io/34-07.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/34-07.webp" style="zoom:50%;" />

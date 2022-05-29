@@ -114,31 +114,31 @@ int main(void)
 
 将每个节点指向自身，图中用不同颜色表示。
 
-<img src="https://assets.zouht.com/img/io/32-01.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/32-01.webp" style="zoom:50%;" />
 
 **找到最短的边 $1\leftrightarrow 3$，长度为 $1$：**
 
 $fa[1]\neq fa[3]$，不会成环。将 $1$、$3$ 节点合并。
 
-<img src="https://assets.zouht.com/img/io/32-02.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/32-02.webp" style="zoom:50%;" />
 
 **找到最短的边 $4\leftrightarrow 6$，长度为 $2$：**
 
 $fa[4]\neq fa[6]$，不会成环。将 $4$、$6$ 节点合并。
 
-<img src="https://assets.zouht.com/img/io/32-03.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/32-03.webp" style="zoom:50%;" />
 
 **找到最短的边 $2\leftrightarrow 5$，长度为 $3$：**
 
 $fa[2]\neq fa[5]$，不会成环。将 $2$、$5$ 节点合并。
 
-<img src="https://assets.zouht.com/img/io/32-04.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/32-04.webp" style="zoom:50%;" />
 
 **找到最短的边 $3\leftrightarrow 6$，长度为 $4$：**
 
 $fa[3]\neq fa[6]$，不会成环。将 $3$、$6$ 节点合并。
 
-<img src="https://assets.zouht.com/img/io/32-05.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/32-05.webp" style="zoom:50%;" />
 
 **找到最短的边 $1\leftrightarrow 4, 3\leftrightarrow 4, 2\leftrightarrow 3$，长度为 $5$：**
 
@@ -146,6 +146,6 @@ $fa[1]=fa[4], fa[3]=fa[4]$，会成环。不可合并。
 
 $fa[2]\neq fa[3]$，不会成环。将 $2$、$3$ 节点合并。
 
-<img src="https://assets.zouht.com/img/io/32-06.webp" style="zoom:50%;" />
+<img src="https://assets.zouht.com/img/note/32-06.webp" style="zoom:50%;" />
 
 **这时已经求出了最小生成树，后续操作均会成环，因此都会被跳过。**

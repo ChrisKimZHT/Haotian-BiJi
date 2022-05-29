@@ -59,7 +59,7 @@ https://ac.nowcoder.com/acm/contest/26134/G
 
 ### 说明
 
-![说明](https://assets.zouht.com/img/io/4-01.webp)
+![说明](https://assets.zouht.com/img/note/4-01.webp)
 
 ## 我的笔记：
 
@@ -71,7 +71,7 @@ https://ac.nowcoder.com/acm/contest/26134/G
 
 经过简单思考，就像国际象棋棋盘一样，黑色格子能贡献能量，白色格子贡献为0。为了让能量最大化，当然要把大数放到能贡献能量的区域。就比如下图，我们把 36~19 放到黑色格子内，把 1~18 放到白色格子里。
 
-<img src="https://assets.zouht.com/img/io/4-02.webp" style="zoom:40%;" />
+<img src="https://assets.zouht.com/img/note/4-02.webp" style="zoom:40%;" />
 
 
 
@@ -79,7 +79,7 @@ https://ac.nowcoder.com/acm/contest/26134/G
 
 我们可以发现，不同位置的黑色格子，贡献能量的次数是不同的，比如中间的黑色格子与上下左右四个格子相邻，即会贡献四次能量。最后黑色格子可以分成三组，即角上贡献2次，边上贡献3次，内部贡献4次。
 
-<img src="https://assets.zouht.com/img/io/4-03.webp" style="zoom:40%;" />
+<img src="https://assets.zouht.com/img/note/4-03.webp" style="zoom:40%;" />
 
 **各种格子有几个？**
 
@@ -95,7 +95,7 @@ https://ac.nowcoder.com/acm/contest/26134/G
 
 二、$n$ 与 $m$ 中一奇一偶
 
-<img src="https://assets.zouht.com/img/io/4-04.webp" style="zoom:40%;" />
+<img src="https://assets.zouht.com/img/note/4-04.webp" style="zoom:40%;" />
 
 可以发现结果其实和上面一种情况是一样的，于是与上面情况合并。
 
@@ -105,7 +105,7 @@ https://ac.nowcoder.com/acm/contest/26134/G
 
 情况 1
 
-<img src="https://assets.zouht.com/img/io/4-05.webp" style="zoom:40%;" />
+<img src="https://assets.zouht.com/img/note/4-05.webp" style="zoom:40%;" />
 
 贡献 4：$\lceil\frac{(n-2)(m-2)}{2}\rceil$
 
@@ -117,7 +117,7 @@ https://ac.nowcoder.com/acm/contest/26134/G
 
 情况 2
 
-<img src="https://assets.zouht.com/img/io/4-06.webp" style="zoom:40%;" />
+<img src="https://assets.zouht.com/img/note/4-06.webp" style="zoom:40%;" />
 
 贡献 4：$\lfloor\frac{(n-2)(m-2)}{2}\rfloor$
 

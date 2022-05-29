@@ -129,7 +129,7 @@ int main(void)
 
 然后将起点 $(序号,距离)=(1,0)$ 入堆，堆顶为 $(1,0)$
 
-<img src="https://assets.zouht.com/img/io/27-01.webp" style="zoom: 50%;" />
+<img src="https://assets.zouht.com/img/note/27-01.webp" style="zoom: 50%;" />
 
 ------
 
@@ -143,7 +143,7 @@ int main(void)
   - $3$ 号节点新距离 $0+1=1<\infty$，更新距离。
     - $3$ 号节点未被标记，$(3,1)$ 入堆
 
-<img src="https://assets.zouht.com/img/io/27-02.webp" style="zoom: 50%;" />
+<img src="https://assets.zouht.com/img/note/27-02.webp" style="zoom: 50%;" />
 
 ------
 
@@ -155,7 +155,7 @@ int main(void)
   - $5$ 号节点新距离 $1+3=4<\infty$，更新距离。
     - $5$ 号节点未被标记，$(5,4)$ 入堆
 
-<img src="https://assets.zouht.com/img/io/27-03.webp" style="zoom: 50%;" />
+<img src="https://assets.zouht.com/img/note/27-03.webp" style="zoom: 50%;" />
 
 ------
 
@@ -169,7 +169,7 @@ int main(void)
   - $5$ 号节点新距离 $2+1=3<4$，更新距离。
     - $5$ 号节点未被标记，$(5,3)$ 入堆
 
-<img src="https://assets.zouht.com/img/io/27-04.webp" style="zoom: 50%;" />
+<img src="https://assets.zouht.com/img/note/27-04.webp" style="zoom: 50%;" />
 
 ------
 
@@ -181,7 +181,7 @@ int main(void)
   - $6$ 号节点新距离 $3+2=5<\infty$，更新距离。
     - $6$ 号节点未被标记，$(6,5)$ 入堆
 
-<img src="https://assets.zouht.com/img/io/27-05.webp" style="zoom: 50%;" />
+<img src="https://assets.zouht.com/img/note/27-05.webp" style="zoom: 50%;" />
 
 ------
 
@@ -190,7 +190,7 @@ int main(void)
 - 弹出 $(5,4)$
 - $5$ 号节点已经标记过，跳过其他步骤
 
-<img src="https://assets.zouht.com/img/io/27-06.webp" style="zoom: 50%;" />
+<img src="https://assets.zouht.com/img/note/27-06.webp" style="zoom: 50%;" />
 
 ------
 
@@ -201,7 +201,7 @@ int main(void)
 - 遍历 $4$ 号节点连接的节点 $6$
   - $6$ 号节点新距离 $5+2=7>5$，不更新距离，跳过其他步骤。
 
-<img src="https://assets.zouht.com/img/io/27-07.webp" style="zoom: 50%;" />
+<img src="https://assets.zouht.com/img/note/27-07.webp" style="zoom: 50%;" />
 
 ------
 
@@ -211,7 +211,7 @@ int main(void)
 - 标记 $6$ 号节点
 - 无节点与 $6$ 号节点相连，无需其他操作
 
-<img src="https://assets.zouht.com/img/io/27-08.webp" style="zoom: 50%;" />
+<img src="https://assets.zouht.com/img/note/27-08.webp" style="zoom: 50%;" />
 
 ------
 

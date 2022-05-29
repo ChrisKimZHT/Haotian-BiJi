@@ -95,7 +95,7 @@ Be sure to print the answer modulo $998244353$.
 
 我们要求 $|A\cup B\cup C|$，可以先求 $|A|+|B|+|C|$，发现有三个重复部分，那就再减去 $|A\cap B|,|B\cap C|,|A\cap C|$，发现减多了一个部分，那就再补回去一个 $|A\cap B\cap C|$
 
-<img src="https://assets.zouht.com/img/io/43-01.webp" style="zoom: 10%;" />
+<img src="https://assets.zouht.com/img/note/43-01.webp" style="zoom: 10%;" />
 
 用数学语言描述容斥原理如下：
 $$
