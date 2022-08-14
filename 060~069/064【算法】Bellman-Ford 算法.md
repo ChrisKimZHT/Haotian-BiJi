@@ -1,6 +1,7 @@
 **解决赋权图的单源最短路径问题：**Bellman-Ford (贝尔曼-福特) 算法
 
-- 可以解决负边
+- 能解决负边
+- 能解决负环
 
 <!--more-->
 
@@ -39,17 +40,17 @@ bellman_ford(G, dist[])
 
 <img src="https://assets.zouht.com/img/note/64-01.webp" style="zoom: 50%;" />
 
-$B\rightarrow D\rightarrow C\rightarrow\cdots$ 为一个回路，该回路的权值为 $1+(-2)+(-1)=-2$，即负权回路。若要求 $A\rightarrow E$ 的最短路，我们可以在负权回路中绕任意次，每绕一次路径长度 $-2$。因此 $A\rightarrow E$ 的距离可以为 $-\infin$，因此不存在最短路径。
+$B\rightarrow D\rightarrow C\rightarrow\cdots$ 为一个回路，该回路的权值为 $1+(-2)+(-1)=-2$，即负权回路。若要求 $A\rightarrow E$ 的最短路，我们可以在负权回路中绕任意次，每绕一次路径长度 $-2$。因此 $A\rightarrow E$ 的距离可以为 $-\infty$，因此不存在最短路径。
 
 若要判断是否有负权回路，可以在 $\left|V\right|-1$ 次后额外进行一次迭代，若第 $\left|V\right|$ 次迭代又发生了松弛操作，则可以确定图中存在负权回路。
 
 #### 无穷大判断
 
-由于在代码实现中我们往往使用一个较大的数作为 $\infin$，例如 0x3f3f3f3f. 而在该算法中，有可能出现以下松弛操作：
+由于在代码实现中我们往往使用一个较大的数作为 $\infty$，例如 0x3f3f3f3f. 而在该算法中，有可能出现以下松弛操作：
 
 <img src="https://assets.zouht.com/img/note/64-02.webp" style="zoom:67%;" />
 
-松弛后，后者的值变成了 $\infin-1$。虽然在数学中 $\infin-1=\infin$，但在程序中 $\text{0x3f3f3f3f}$ 不等于 $\text{0x3f3f3f3f}-1$，此时对于无穷大的判断就会产生问题。为了规避这个问题，我们可以判断一个数若 $\geq \text{0x3f3f3f3f}/2$ 就为 $\infin$，在一般情况下，是不会出现错误的。
+松弛后，后者的值变成了 $\infty-1$。虽然在数学中 $\infty-1=\infty$，但在程序中 $\text{0x3f3f3f3f}$ 不等于 $\text{0x3f3f3f3f}-1$，此时对于无穷大的判断就会产生问题。为了规避这个问题，我们可以判断一个数若 $\geq \text{0x3f3f3f3f}/2$ 就为 $\infty$，在一般情况下，是不会出现错误的。
 
 #### 串联问题
 
