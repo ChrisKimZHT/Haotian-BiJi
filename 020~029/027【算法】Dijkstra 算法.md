@@ -31,7 +31,7 @@
 ```
 dijkstra (G, dist[])
 	初始化: dist[1~V]=+INF, dist[1]=0
-	for (i : 1~V)
+	for (循环V次)
 		s=待定点的集合中dist[s]最小的顶点
 		记s已确定
 		for (t : 从s出发能到达的顶点的集合)
