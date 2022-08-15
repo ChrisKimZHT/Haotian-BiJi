@@ -6,40 +6,28 @@
 
 # Kruskal 算法
 
-### 时间复杂度：$O(\left|E\right|\log\left|V\right|)$
+## 时间复杂度
 
-$\left|E\right|$ 为边数，$\left|V\right|$ 为顶点数。
+时间复杂度：$O(\left|E\right|\log\left|V\right|)$
 
-### 代码实现：
+$\left|E\right|$ 为边数，$\left|V\right|$ 为顶点数，该版本适合稀疏图，即 $\left|E\right|\ll\left|V\right|^2$ 的图。
+
+## 代码实现
 
 ```cpp
-#include <bits/stdc++.h>
-#define SIZE 10000
-
-using namespace std;
-
-struct EDGE
+const int MAXN = 1e5 + 10, INF = 0x3f3f3f3f;
+int v, e;     // v顶点数 e边数
+int fa[MAXN]; // 并查集
+struct Edge   // 边的结构体，重载了<供sort()
 {
-    int start, end, dist; // start, end表示边的端点 dist表示边的长度
-    // 构造函数
-    EDGE(int a, int b, int c)
-    {
-        start = a;
-        end = b;
-        dist = c;
-    }
-    // 重载<运算符供sort()排序
-    bool operator<(const EDGE &x) const
+    int start, end, dist;
+    bool operator<(const Edge &x) const
     {
         return dist < x.dist;
     }
 };
+vector<Edge> edges; // 邻接表存边
 
-int V, E;          // E边数，V顶点数，S起点
-vector<EDGE> edge; // 储存边
-
-// 并查集模板
-int fa[SIZE];
 inline void init(int n)
 {
     for (int i = 1; i <= n; i++)
@@ -56,47 +44,29 @@ inline void merge(int i, int j)
     fa[find(i)] = find(j);
 }
 
-int main(void)
+int kruskal()
 {
-    cin >> V >> E;
-    init(V);
-    for (int i = 0; i < E; i++)
-    {
-        // 输入边，储存边
-        int a, b, dis;
-        cin >> a >> b >> dis;
-        edge.push_back(EDGE(a, b, dis));
-    }
-    // 按边长排序
-    sort(edge.begin(), edge.end());
-    // Kruskal算法开始
+    sort(edges.begin(), edges.end());
     int ans = 0, selected = 0;
     bool flag = false;
-    // 从小到大遍历边
-    for (auto ed : edge)
+    for (auto ed : edges)
     {
-        // 若两点不连通，则合并
         if (find(ed.start) != find(ed.end))
         {
             merge(ed.start, ed.end);
             ans += ed.dist;
-            if (++selected == V - 1)
+            if (++selected == v - 1)
             {
                 flag = true;
                 break;
             }
         }
     }
-    // 输出最小权值
-    if (flag)
-        cout << ans << endl;
-    else
-        cout << "Error" << endl;
-    return 0;
+    return flag ? ans : INF;
 }
 ```
 
-### 算法思路：
+## 分析
 
 该算法的核心思想就是：选择 $A$ 的边集合外，权值最小且不会成环的边，加入到 $A$ 中。
 
@@ -104,11 +74,9 @@ int main(void)
 
 实现“权值最小”的方法：将边储存在 `vector` 内，按长度排序（我用的重载运算符和 `sort()` )
 
-实现“不会成环”的方法：判断两节点是否已经联通，若已经联通，再加一条边肯定会成环，只有不连通才能合并（我用的并查集）
+实现“不会成环”的方法：判断两节点是否已经联通，若已经联通，再加一条边肯定会成环，只有不连通才能合并（我用的并查集）。
 
-------
-
-下面用例子模拟一下该算法的过程
+下面用例子模拟一下该算法的过程：
 
 **初始化并查集：**
 
