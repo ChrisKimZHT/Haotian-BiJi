@@ -7,7 +7,7 @@
 
 # Floyd-Warshall 算法
 
-## 时间复杂度
+## 复杂度
 
 时间复杂度：$O(\left|V\right|^3)$
 

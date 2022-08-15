@@ -92,7 +92,7 @@ bool spfa()
         vis[cur] = false;
         for (auto next : edge[cur])
         {
-            if (dist[cur] + next.first < dist[next.second])
+            if (dist[next.second] > dist[cur] + next.first)
             {
                 dist[next.second] = dist[cur] + next.first;
                 cnt[next.second] = cnt[cur] + 1;

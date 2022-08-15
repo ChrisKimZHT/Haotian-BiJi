@@ -8,11 +8,13 @@
 
 ## 朴素版本
 
-### 时间复杂度 $O(\left|V\right|^2)$
+### 复杂度
+
+时间复杂度：$O(\left|V\right|^2)$
 
 此为最坏情况，$\left|E\right|$ 为边数，$\left|V\right|$ 为顶点数。该版本适合稠密图，即 $\left|E\right|接近\left|V\right|^2$ 的图。
 
-### 算法思路
+### 分析
 
 **核心思想**
 
@@ -20,7 +22,7 @@
 
 假设我们已经确定了 $A\rightarrow A=0$，$A\rightarrow C=1$，称 $A,C$ 为确定点。那么我们计算出可以从确定点一步到达的点的最短距离，即 $A\rightarrow B=2,A\rightarrow D=3,A\rightarrow E=4$，称 $B,D,E$ 为待定点。
 
-接下来，我们用贪心思想还能将待定点中距离最小的那个点转化为确定点，即 $B$ 点的距离 $2$ 可以确定是最短的。然后我们就可以用该确定点更新可到达的点，再循环上述整个过程。
+接下来，我们用贪心思想还能将待定点中距离最小的那个点转化为确定点，即 $B$ 点的距离 $2$ 可以确定是最短的。然后我们就可以用该确定点更新可到达的点，称为松弛操作。再循环上述整个过程。
 
 <img src="https://assets.zouht.com/img/note/27-09.webp" style="zoom:50%;" />
 
@@ -30,13 +32,13 @@
 
 ```
 dijkstra (G, dist[])
-	初始化: dist[1~V]=+INF, dist[1]=0
-	for (循环V次)
-		s=待定点的集合中dist[s]最小的顶点
-		记s已确定
-		for (t : 从s出发能到达的顶点的集合)
-			if (t待定 && 以t为中介点到s的距离更短)
-				更新dist[s];
+	初始化: dist[1~v]=+INF, dist[1]=0
+	for (循环v次)
+		t=待定点的集合中dist[t]最小的顶点
+		记t已确定
+		for (j : 从t出发能到达的顶点的集合)
+			if (以t为中介点到j的距离更短)
+				更新dist[j];
 ```
 
 ### 代码实现
@@ -68,9 +70,19 @@ int dijkstra()
 
 ## 堆优化版本
 
-### 时间复杂度 $O((\left|E\right|+\left|V\right|)\log\left|V\right|)$ 
+### 复杂度
+
+时间复杂度：$O((\left|E\right|+\left|V\right|)\log\left|V\right|)$ 
 
 此为最坏情况，$\left|E\right|$ 为边数，$\left|V\right|$ 为顶点数。该版本适合稀疏图，即 $\left|E\right|\ll\left|V\right|^2$ 的图。
+
+### 分析
+
+朴素版本中，每次迭代都有一个查找距离最小顶点的过程，并且对所有点尝试进行了松弛操作，共需要 $2\left|V\right|$ 次循环。
+
+针对查找最小值这一操作，二叉堆是一个很好的数据结构。我们建立一个小顶堆，即可在 $O(1)$ 时间内取得最小值。
+
+针对松弛操作，我们将存图方式改为邻接表，所以我们就可以只更新与该点相连的顶点，效率更高。
 
 ### 代码实现
 
@@ -103,7 +115,7 @@ void dijkstra()
         vis[cur.second] = true;
         for (auto next : edge[cur.second])
         {
-            if (dist[cur.second] + next.first < dist[next.second])
+            if (dist[next.second] > dist[cur.second] + next.first)
             {
                 dist[next.second] = dist[cur.second] + next.first;
                 if (!vis[next.second])
