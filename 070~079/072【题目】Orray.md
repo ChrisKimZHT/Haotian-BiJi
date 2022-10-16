@@ -6,10 +6,9 @@ https://codeforces.com/contest/1742/problem/G
 
 <!--more-->
 
-time limit per test: 2 seconds
-memory limit per test: 256 megabytes
-input: standard input
-output: standard output
+2 seconds / 256 megabytes
+
+standard input / standard output
 
 ### Problem
 
