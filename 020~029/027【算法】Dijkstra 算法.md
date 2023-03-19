@@ -50,11 +50,11 @@ int dist[MAXN];    // 最短距离
 bool vis[MAXN];    // 访问情况
 int v, e;          // v顶点数 e边数
 
-int dijkstra()
+void dijkstra()
 {
     memset(dist, 0x3f, sizeof(dist));
     dist[1] = 0;
-    for (int i = 0; i < v; i++)
+    for (int i = 1; i <= v; i++)
     {
         int t = -1;
         for (int j = 1; j <= v; j++)
@@ -64,7 +64,6 @@ int dijkstra()
         for (int j = 1; j <= v; j++)
             dist[j] = min(dist[j], dist[t] + g[t][j]);
     }
-    return dist[v] == INF ? -1 : dist[v];
 }
 ```
 
