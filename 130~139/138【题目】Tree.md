@@ -28,11 +28,11 @@ $$
 
 转移方式为，其中左子树根节点下标 $l$，右子树根节点下标 $r$，左子树大小为 $n_{\text{l}}$，右子树大小为 $n_{\text{r}}$：
 $$
-dp_{i,j}=\max_{k=\max\{0,j-n_{\text{r}}\}}^{\max\{n_{\text{l}},j\}}(dp_{l,j}+dp_{r,j}+\text{val}_p\cdot(n_{\text{l,black}}\cdot n_{\text{r,white}}+n_{\text{l,white}}\cdot n_{\text{r,black}}))\\
+dp_{i,j}=\max_{k=\max\{0,j-n_{\text{r}}\}}^{\min\{n_{\text{l}},j\}}(dp_{l,n_{\text{l,black}}}+dp_{r,n_{\text{r,black}}}+\text{val}_p\cdot(n_{\text{l,black}}\cdot n_{\text{r,white}}+n_{\text{l,white}}\cdot n_{\text{r,black}}))\\
 其中,
 \begin{cases}
 n_{\text{l,black}}=k\\
-n_{\text{l,white}}=n_{\text{l}}-n_{\text{l,white}}\\
+n_{\text{l,white}}=n_{\text{l}}-n_{\text{l,black}}\\
 n_{\text{r,black}}=j-k\\
 n_{\text{r,white}}=n_{\text{r}}-n_{\text{r,black}}
 \end{cases}
