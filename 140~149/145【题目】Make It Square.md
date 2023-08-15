@@ -191,6 +191,8 @@ void solve()
             }
         }
         int ans = 1;
+        KMP kmp_s(s);
+        auto border_s = kmp_s.get_border();
         for (int i = 1; i <= m; i++)
         {
             if (i > (ls - lt) / 2)
@@ -200,8 +202,6 @@ void solve()
             }
             else
             {
-                KMP kmp_s(s);
-                auto border_s = kmp_s.get_border();
                 if (border_s.count((ls - lt) / 2 - i) == 0)
                     cout << 0 << " \n"[i == m];
                 else
@@ -221,6 +221,8 @@ void solve()
             }
         }
         int ans = 1;
+        KMP kmp_t(t);
+        auto border_t = kmp_t.get_border();
         for (int i = 1; i <= m; i++)
         {
             if (i > (lt - ls) / 2)
@@ -230,8 +232,6 @@ void solve()
             }
             else
             {
-                KMP kmp_t(t);
-                auto border_t = kmp_t.get_border();
                 if (border_t.count((lt - ls) / 2 - i) == 0)
                     cout << 0 << " \n"[i == m];
                 else
