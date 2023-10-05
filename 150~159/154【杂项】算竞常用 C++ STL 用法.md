@@ -1,6 +1,15 @@
-**C++ 标准模板库 (STL, Standard Template Library)**：包含一些常用数据结构与算法的模板的 C++ 软件库。其包含四个组件——算法 (Algorithms)、容器 (Containers)、函数 (Functors)、迭代器 (Iterators).
+**C++ 标准模板库 (STL, Standard Template Library)**：包含一些常用数据结构与算法的模板的 C++ 软件库。其包含四个组件——算法 (Algorithms)、容器 (Containers)、仿函数 (Functors)、迭代器 (Iterators).
 
 <!--more-->
+
+示例：
+
+- 算法：`sort(a.begin(), a.end())`
+- 容器：`priority_queue<int> pque`
+- 仿函数：`greater<int>()`
+- 迭代器：`vector<int>::iterator it = a.begin()`
+
+
 
 # 1 前言
 
