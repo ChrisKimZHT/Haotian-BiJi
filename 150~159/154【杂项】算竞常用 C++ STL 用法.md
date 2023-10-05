@@ -1022,6 +1022,28 @@ arr.erase(unique(arr.begin(), arr.end()), arr.end());
 | $f(x)=\lfloor x\rfloor$ | `floor(2.1)` |
 | $f(x)=\left<x\right>$   | `rount(2.1)` |
 
+**注意事项**
+
+由于浮点误差，有些的数学函数的行为可能与预期不符，导致 WA。如果你的操作数都是整型，那么用下面的写法会更稳妥。
+
+> 原文地址：https://codeforces.com/blog/entry/107717
+
+- $\lfloor\frac{a}{b}\rfloor$
+  - 别用：`floor(1.0 * a / b)`
+  - 要用：`a / b`
+- $\lceil\frac{a}{b}\rceil$
+  - 别用：`ceil(1.0 * a / b)`
+  - 要用：`(a + b - 1) / b`  （$\lceil\frac{a}{b}\rceil=\lfloor\frac{a+b-1}{b}\rfloor$）
+- $\lfloor\sqrt a\rfloor$
+  - 别用：`(int) sqrt(a)`
+  - 要用：二分查找 https://io.zouht.com/7.html
+- $a^b$
+  - 别用：`pow(a, b)`
+  - 要用：快速幂 https://io.zouht.com/18.html
+- $\lfloor\log_2 a\rfloor$
+  - 别用：`log2(a)`
+  - 要用：`__lg` （不规范，但是这是竞赛）/ `bit_width`（C++20 可用）
+
 ## 4.9 `gcd()` / `lcm()`
 
 （C++17）返回最大公因数 / 最小公倍数
@@ -1033,7 +1055,21 @@ int y = lcm(8, 12); // 24
 
 如果不是 C++17，但是是 GNU 编译器（g++），那么可以用内置函数 `__gcd()`.
 
-当然，`gcd` 函数也挺好写，想自己写也不是不行。
+当然，`gcd` / `lcm` 函数也挺好写，直接写也行（欧几里得算法）：
+
+```cpp
+int gcd(int a, int b)
+{
+    if (!b)
+        return a;
+    return gcd(b, a % b);
+}
+
+int lcm(int a, int b)
+{
+    return a / gcd(a, b) * b;
+}
+```
 
 
 
