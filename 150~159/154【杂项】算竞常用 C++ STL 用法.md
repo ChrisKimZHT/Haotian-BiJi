@@ -202,13 +202,13 @@ vector<int> a(65536);
 long long a = a.size() * a.size(); // 直接溢出变成0了
 ```
 
-## 2.2 栈 [stack](https://zh.cppreference.com/w/cpp/container/stack)
+## 2.3 栈 [stack](https://zh.cppreference.com/w/cpp/container/stack)
 
 **`#include <stack>`**
 
 通过二次封装双端队列 (deque) 容器，实现先进后出的栈数据结构。
 
-### 2.2.1 常用方法
+### 2.3.1 常用方法
 
 | 作用                   | 用法              | 示例                 |
 | ---------------------- | ----------------- | -------------------- |
@@ -218,13 +218,13 @@ long long a = a.size() * a.size(); // 直接溢出变成0了
 | 取栈顶                 | `.top()`          | `int a = stk.top();` |
 | 查看大小 / 清空 / 判空 | 略                | 略                   |
 
-### 2.2.2 适用情形
+### 2.3.2 适用情形
 
 如果不卡常的话，就可以直接用它而不需要手写栈了。
 
 另外，vector 也可以当栈用，vector 的 `.back()` 取尾部元素，就相当于取栈顶，`.push_back()` 相当于进栈，`.pop_back()` 相当于出栈。
 
-### 2.2.3 注意事项
+### 2.3.3 注意事项
 
 不可访问内部元素！**下面都是错误用法**
 
@@ -235,13 +235,13 @@ for (auto ele : stk)
     cout << stk << endl;
 ```
 
-## 2.3 队列 [queue](https://zh.cppreference.com/w/cpp/container/queue)
+## 2.4 队列 [queue](https://zh.cppreference.com/w/cpp/container/queue)
 
 **`#include <queue>`**
 
 通过二次封装双端队列 (deque) 容器，实现先进先出的队列数据结构。
 
-### 2.3.1 常用方法
+### 2.4.1 常用方法
 
 | 作用                   | 用法              | 示例                   |
 | ---------------------- | ----------------- | ---------------------- |
@@ -252,11 +252,11 @@ for (auto ele : stk)
 | 取队尾                 | `.back()`         | `int a = que.back();`  |
 | 查看大小 / 清空 / 判空 | 略                | 略                     |
 
-### 2.3.2 适用情形
+### 2.4.2 适用情形
 
 如果不卡常的话，就可以直接用它而不需要手写队列了。
 
-### 2.3.3 注意事项
+### 2.4.3 注意事项
 
 不可访问内部元素！**下面都是错误用法**
 
@@ -267,13 +267,13 @@ for (auto ele : que)
     cout << ele << endl;
 ```
 
-## 2.4 优先队列 [priority_queue](https://zh.cppreference.com/w/cpp/container/priority_queue)
+## 2.5 优先队列 [priority_queue](https://zh.cppreference.com/w/cpp/container/priority_queue)
 
 **`#include <queue>`**
 
 提供常数时间的最大元素查找，对数时间的插入与提取，底层原理是二叉堆。
 
-### 2.4.1 常用方法
+### 2.5.1 常用方法
 
 #### 构造
 
@@ -301,14 +301,14 @@ priority_queue<int, vector<int>, greater<int>> pque2; // 储存int的小顶堆
 
 进出队复杂度 $O(\log n)$，取堆顶 $O(1)$.
 
-### 2.4.2 适用情形
+### 2.5.2 适用情形
 
 持续维护元素的有序性：每次向队列插入大小不定的元素，或者每次从队列里取出大小最小/最大的元素，元素数量 $n$，插入操作数量 $k$.
 
 - 每次插入后进行快速排序：$k\cdot n\log n$
 - 使用优先队列维护：$k\cdot\log n$
 
-### 2.4.3 注意事项
+### 2.5.3 注意事项
 
 #### 仅堆顶可读
 
@@ -335,7 +335,7 @@ pque.pop();
 pque.push(tp + 1);
 ```
 
-## 2.5 集合 [set](https://zh.cppreference.com/w/cpp/container/set)
+## 2.6 集合 [set](https://zh.cppreference.com/w/cpp/container/set)
 
 **`#include <set>`**
 
@@ -347,7 +347,7 @@ pque.push(tp + 1);
 | 互异性     | 一个元素仅可以在集合中出现一次 | ✔             | ❌（任意次）   | ✔             |
 | 无序性     | 集合中的元素是没有顺序的       | ❌（从小到大） | ❌（从小到大） | ✔             |
 
-### 2.5.1 常用方法
+### 2.6.1 常用方法
 
 #### 构造
 
@@ -391,13 +391,13 @@ for (auto &ele : st)
 
 增删查时间复杂度均为 $O(\log n)$
 
-### 2.5.2 适用情形
+### 2.6.2 适用情形
 
 - 元素去重：$[1,1,3,2,4,4]\to[1,2,3,4]$
 - 维护顺序：$[1,5,3,7,9]\to[1,3,5,7,9]$
 - 元素是否出现过：元素大小 $[-10^{18},10^{18}]$，元素数量 $10^6$，vis 数组无法实现，通过 set 可以完成。
 
-### 2.5.3 注意事项
+### 2.6.3 注意事项
 
 #### 不存在下标索引
 
@@ -425,7 +425,7 @@ auto it = st.find(2);      // 正确，返回2所在位置的迭代器。
 int idx = it - st.begin(); // 错误！不可相减得到下标。
 ```
 
-## 2.6 映射 [map](https://zh.cppreference.com/w/cpp/container/map)
+## 2.7 映射 [map](https://zh.cppreference.com/w/cpp/container/map)
 
 **`#include <map>`**
 
@@ -447,7 +447,7 @@ $$
 | 互异性 | 一个键仅可以在映射中出现一次 | ✔             | ❌（任意次）   | ✔             |
 | 无序性 | 键是没有顺序的               | ❌（从小到大） | ❌（从小到大） | ✔             |
 
-### 2.6.1 常用方法
+### 2.7.1 常用方法
 
 #### 构造
 
@@ -499,11 +499,11 @@ for (auto &[key, val] : mp)
 
 增删改查时间复杂度均为 $O(\log n)$
 
-### 2.6.2 适用情形
+### 2.7.2 适用情形
 
 需要维护映射的场景可以使用：输入若干字符串，统计每种字符串的出现次数。(`map<string, int> mp`)
 
-### 2.6.3 注意事项
+### 2.7.3 注意事项
 
 #### 中括号访问时默认值
 
@@ -526,13 +526,13 @@ auto it = mp.find('a');      // 正确，返回2所在位置的迭代器。
 int idx = it - mp.begin();   // 错误！不可相减得到下标。
 ```
 
-## 2.7 字符串 [string](https://zh.cppreference.com/w/cpp/string)
+## 2.8 字符串 [string](https://zh.cppreference.com/w/cpp/string)
 
 **`#include <string>`**
 
 顾名思义，就是储存字符串的。
 
-### 2.7.1 常用方法
+### 2.8.1 常用方法
 
 #### 构造
 
@@ -586,11 +586,11 @@ printf("%s", s.c_str());
 | string                                         | double      | stod()      |
 | string                                         | long double | stold()     |
 
-### 2.7.2 适用情形
+### 2.8.2 适用情形
 
 非常好用！~~建议直接把字符数组扔了，赶快投入 string 的怀抱。~~
 
-### 2.7.3 注意事项
+### 2.8.3 注意事项
 
 #### 尾接字符串一定要用 `+=`
 
@@ -622,13 +622,13 @@ for (int i = 0; i < 5e5; i++)
 
 ~~不要幻想 STL 内置了个 $O(n)$ 的 KMP 算法~~
 
-## 2.8 二元组 [pair](https://zh.cppreference.com/w/cpp/utility/pair)
+## 2.9 二元组 [pair](https://zh.cppreference.com/w/cpp/utility/pair)
 
 **`#include <utility>`**
 
 顾名思义，就是储存二元组的。
 
-### 2.8.1 常用方法
+### 2.9.1 常用方法
 
 #### 构造
 
@@ -688,11 +688,11 @@ pair<int, int> p2 = {1, 3};
 if (p1 == p2) { ... } // false
 ```
 
-### 2.8.2 适用场景
+### 2.9.2 适用场景
 
 所有需要二元组的场景均可使用，效率和自己定义结构体差不多。
 
-### 2.8.3 注意事项
+### 2.9.3 注意事项
 
 无
 
