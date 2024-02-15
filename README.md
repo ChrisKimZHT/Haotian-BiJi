@@ -1,6 +1,6 @@
 # Haotian-BiJi
 
-[颢天笔记](https://io.zouht.com/) 网站的 Markdown 源文件，内容大多为 ACM 竞赛算法与竞赛题目题解。
+[颢天笔记](https://io.zouht.com/) 网站的 Markdown 源文件，内容大多为 ACM 竞赛算法与竞赛题目题解，目前正在向机器学习转型。
 
 **命名规则：**
 
