@@ -6,7 +6,7 @@
 >
 > - [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://aclanthology.org/2021.acl-long.353/)
 > - [The Power of Scale for Parameter-Efficient Prompt Tuning](http://arxiv.org/abs/2104.08691)
-> - [P-Tuning: Prompt Tuning Can Be Comparable to Fine-tuning Across Scales and Tasks](https://aclanthology.org/2022.acl-short.8/)
+> - [GPT Understands, Too](http://arxiv.org/abs/2103.10385)
 > - [P-Tuning v2: Prompt Tuning Can Be Comparable to Fine-tuning Universally Across Scales and Tasks](https://arxiv.org/abs/2110.07602)
 
 # 1 Prompting
@@ -102,7 +102,7 @@ $$
 
 Prompt Tuning 可以看作 Prefix-tuning 的进一步简化，实际上它可以看作把 Prompting 方法的不可微分的离散提示改为了可优化的连续提示。
 
-它与 Prefix-tuning 的核心区别就是：Prefix-tuning 对每一层都添加可训练前缀参数，**而Prompt Tuning 只在输入前额外训练参数**。
+它与 Prefix-tuning 的核心区别就是：Prefix-tuning 对每一层都添加可训练前缀参数，**而 Prompt Tuning 只在输入前额外训练参数**。
 
 它的一大好处就是将 LLM 视为了一个黑盒，即使在无法修改 LLM 结构的条件下也能完成微调。它还有一大好处是，由于它只对输入添加前缀，这就可以实现多个不同的下游任务可以放在同一 Batch 中交给模型处理，并行程度更高。
 
@@ -126,6 +126,40 @@ $P$ 的初始值如何选取是值得注意的，最简单的方法便是随机�
 
 另外，如果该微调任务是一个分类任务，还可以从答案空间（参考第 1 节）中挑选答案对应的 Embedding 作为初始值。
 
-# 4 P-Tuning
+# 4 P-tuning
 
-W.I.P
+对于上文提到的 Prefix-tuning 和 Prompt Tuning，它们都是针对于自然语言生成 (NLG) 任务的，而本节的 **P-tuning 是针对于自然语言理解** (NLU) 任务的，这是它们的本质区别。
+
+自然语言理解任务可以是语义分析、情感分析、主题识别、意图识别等。例如要求给一段电影评论做情感分类，这便是一个自然语言理解问题。
+
+## 4.1 方法
+
+回顾第 1.1 节的提示学习方法，首先要设计提示模板。提示模板的一般化的格式表示为：
+$$
+\text{<开头提示><X><中间提示><Y><结尾提示>}
+$$
+例如，`电影评论<X>的情感是<Y>的` 这个提示模板便是符合上面这个格式的。
+
+P-tuning 的思想实际上和 Prompt Tuning 几乎一致。回顾第 3.1 节，它在 Embedding 后的 Embed 向量前拼接前缀矩阵作为 Prompt，然后使用优化器进行训练：
+$$
+[P;X]
+$$
+P-tuning 的区别只是拼接位置不同，它是按照提示模板的格式进行拼接，即 Prompt 会在 Embed 向量前、后和中间插入：
+$$
+[P_1;X;P_2;Y;P_3]
+$$
+另外还有一点就是，P-tuning 加入的 Prompt 矩阵实际上经过了重参数化，思想和第 2.2 节的重参数化类似，论文里称为“提示编码器 (Prompt Encoder)”。论文中选用 MLPs 或 LSTM 网络进行重参数化。
+
+## 4.2 优化
+
+P-tuning v2 在 P-tuning 基础上进行了进一步研究，优化了性能。它实际上把 Prefix-tuning (第 2 节) 的思想融合到了 P-Tuning 里，即 Prefix-tuning 对每一层都添加可训练 Prompt 参数，而 P-tuning 只在输入前额外的 Prompt 训练参数。
+
+P-tuning 和 P-tuning v2 的结构对比如下图所示，可见 v2 的每一层都有可训练的 Prompt 参数：
+
+![](https://assets.zouht.com/img/note/180-04.webp)
+
+另外，P-tuning v2 提出 v1 里做的重参数化并不一定能提升性能。使用 MLPs 或 LSTM 网络重参数化 Prompt 矩阵产生的效果与具体的任务相关，不同任务适合的方法不同，有时添加重参数化甚至会降低性能。
+
+此外，P-tuning v2 提出 Prompt 的长度对效果有重要影响，简单的分类问题倾向使用 20 以下的 Prompt 长度，复杂的使用约 100 的长度。
+
+最后，P-tuning v2 提出使用语言模型的 Verbalizer 作为分类头并不一定合适，将其改为直接使用线性分类头更加合适。
