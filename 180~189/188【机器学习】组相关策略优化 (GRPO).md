@@ -45,8 +45,10 @@ $$
 $$
 其中：
 $$
-\mathbb{D}_{KL}(\pi_\theta\Vert\pi_{\mathrm{ref}})=\frac{\pi_{\mathrm{ref}}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}-\log \frac{\pi_{\mathrm{ref}}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}-1\\
-A_i=\overset{\sim}{r_i}=\frac{r_i-\mathrm{mean}(\{r_1,r_2,\cdots,r_G\})}{\mathrm{std}(\{r_1,r_2,\cdots,r_G\})}
+\begin{align}
+\mathbb{D}_{KL}(\pi_\theta\Vert\pi_{\mathrm{ref}})&=\frac{\pi_{\mathrm{ref}}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}-\log \frac{\pi_{\mathrm{ref}}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}-1\\
+A_i&=\overset{\sim}{r_i}=\frac{r_i-\mathrm{mean}(\{r_1,r_2,\cdots,r_G\})}{\mathrm{std}(\{r_1,r_2,\cdots,r_G\})}
+\end{align}
 $$
 可以看到，GRPO 的目标函数和 PPO 的结构几乎一致，重要区别就是 $A_i$ 的计算方式是将 $G$ 个采样的奖励值 $\{r_1,r_2,\cdots,r_G\}$ 归一化。
 
