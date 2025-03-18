@@ -1029,7 +1029,7 @@ arr.erase(unique(arr.begin(), arr.end()), arr.end());
 | $f(x)=\sqrt x$          | `sqrt(2)`    |
 | $f(x)=\lceil x\rceil$   | `ceil(2.1)`  |
 | $f(x)=\lfloor x\rfloor$ | `floor(2.1)` |
-| $f(x)=\left<x\right>$   | `rount(2.1)` |
+| $f(x)=\left<x\right>$   | `round(2.1)` |
 
 **注意事项**
 
