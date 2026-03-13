@@ -18,9 +18,12 @@ GitHub 网页已经支持 $\LaTeX$ 公式渲染，直接打开即可查看，Git
 
 最佳浏览方式是前往我的网站或使用支持 $\LaTeX$ 的本地 Markdown 编辑器。
 
+**关于图片：**
+
+若您需要文章中的图片的 png 原图或原始文件（若有），请电邮 chriskim@foxmail.com 获取。
+
 **许可协议：**
 
 本作品采用[知识共享署名-相同方式共享 4.0 国际许可协议](http://creativecommons.org/licenses/by-sa/4.0/)进行许可。
 
 This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
-
