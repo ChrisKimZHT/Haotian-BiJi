@@ -1,16 +1,16 @@
 # Haotian-BiJi
 
-[颢天笔记](https://io.zouht.com/) 网站的 Markdown 源文件，内容大多为 ACM 竞赛算法与竞赛题目题解，目前正在向机器学习转型。
+[颢天笔记](https://io.zouht.com/) 网站的 Markdown 源文件，内容大多为 ACM 竞赛算法与竞赛题目题解，从 2024 年开始向机器学习内容转型。
 
-**命名规则：**
+## 命名规则
 
 `CID`【`Category`】`Title`.md
 
-- `CID` - 对应网站 Typecho 的页面 ID.
-- `Category` - 对应文章的分类目录，目前有算法、数据结构、数论、题目、杂项。
+- `CID` - 对应网站 Typecho 的页面 ID，即博客文章链接尾部的 html 数字编号。
+- `Category` - 对应文章的分类目录，目前有算法、数据结构、机器学习、数论、题目、杂项。
 - `Title` - 对应文章标题。
 
-**关于公式：**
+## 关于公式
 
 GitHub 网页已经支持 $\LaTeX$ 公式渲染，直接打开即可查看，GitHub 移动端 APP 暂不支持。
 
@@ -18,11 +18,13 @@ GitHub 网页已经支持 $\LaTeX$ 公式渲染，直接打开即可查看，Git
 
 最佳浏览方式是前往我的网站或使用支持 $\LaTeX$ 的本地 Markdown 编辑器。
 
-**关于图片：**
+## 关于图片
+
+图片 webp 托管在博客的 CDN 上且开启反盗链，若您需要进行转载，请手动下载图片并替换图片地址。
 
 若您需要文章中的图片的 png 原图或原始文件（若有），请电邮 chriskim@foxmail.com 获取。
 
-**许可协议：**
+## 许可协议
 
 本作品采用[知识共享署名-相同方式共享 4.0 国际许可协议](http://creativecommons.org/licenses/by-sa/4.0/)进行许可。
 
